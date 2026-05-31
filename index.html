@@ -1,206 +1,246 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>PROTON</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROTON</title>
 
-	<style>
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-			font-family: Arial, sans-serif;
-		}
+<style>
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Arial', sans-serif;
+}
 
-		body {
-			background: #0f0f0f;
-			color: white;
-		}
+body {
+	background: radial-gradient(circle at top, #1a1a1a, #0a0a0a);
+	color: white;
+	overflow-x: hidden;
+}
 
-		/* HEADER */
-		header {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			padding: 15px 30px;
-			background: #111;
-			position: sticky;
-			top: 0;
-			z-index: 1000;
-		}
+/* HEADER GLASS */
+header {
+	position: sticky;
+	top: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 15px 40px;
+	background: rgba(255,255,255,0.05);
+	backdrop-filter: blur(10px);
+	border-bottom: 1px solid rgba(255,255,255,0.1);
+	z-index: 1000;
+}
 
-		.logo {
-			display: flex;
-			align-items: center;
-			gap: 10px;
-		}
+.logo {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
 
-		.logo img {
-			width: 45px;
-			height: 45px;
-		}
+.logo img {
+	width: 45px;
+	height: 45px;
+	animation: spin 8s linear infinite;
+}
 
-		nav a {
-			color: white;
-			text-decoration: none;
-			margin-left: 15px;
-			transition: 0.3s;
-		}
+@keyframes spin {
+	from { transform: rotate(0); }
+	to { transform: rotate(360deg); }
+}
 
-		nav a:hover {
-			color: #ff3b3b;
-		}
+nav a {
+	color: white;
+	text-decoration: none;
+	margin-left: 15px;
+	position: relative;
+	transition: 0.3s;
+}
 
-		/* HERO */
-		.hero {
-			text-align: center;
-			padding: 80px 20px;
-			background: linear-gradient(90deg, #ff3b3b, #111);
-		}
+nav a::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: -5px;
+	width: 0%;
+	height: 2px;
+	background: #ff3b3b;
+	transition: 0.3s;
+}
 
-		.hero h1 {
-			font-size: 42px;
-		}
+nav a:hover::after {
+	width: 100%;
+}
 
-		.hero p {
-			margin-top: 10px;
-			opacity: 0.9;
-		}
+/* HERO */
+.hero {
+	text-align: center;
+	padding: 100px 20px;
+	animation: fadeIn 1s ease-in-out;
+}
 
-		/* CARS */
-		.cars {
-			display: grid;
-			grid-template-columns: repeat(5, 1fr);
-			gap: 15px;
-			padding: 40px;
-		}
+.hero h1 {
+	font-size: 50px;
+	background: linear-gradient(90deg, #ff3b3b, #fff);
+	-webkit-background-clip: text;
+	color: transparent;
+}
 
-		.card {
-			background: #1a1a1a;
-			border-radius: 10px;
-			overflow: hidden;
-			transition: 0.3s;
-			text-align: center;
-		}
+.hero p {
+	margin-top: 10px;
+	opacity: 0.8;
+}
 
-		.card:hover {
-			transform: scale(1.05);
-		}
+/* CARS */
+.cars {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	gap: 20px;
+	padding: 40px;
+}
 
-		.card img {
-			width: 100%;
-			height: 150px;
-			object-fit: cover;
-		}
+.card {
+	background: rgba(255,255,255,0.05);
+	border: 1px solid rgba(255,255,255,0.1);
+	border-radius: 15px;
+	overflow: hidden;
+	transition: 0.4s;
+	transform: translateY(30px);
+	opacity: 0;
+	animation: fadeUp 0.8s forwards;
+}
 
-		.card p {
-			padding: 10px;
-		}
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(4) { animation-delay: 0.4s; }
+.card:nth-child(5) { animation-delay: 0.5s; }
 
-		/* ABOUT */
-		.about {
-			display: grid;
-			grid-template-columns: repeat(5, 1fr);
-			gap: 10px;
-			padding: 40px;
-		}
+.card:hover {
+	transform: scale(1.05);
+	border-color: #ff3b3b;
+}
 
-		.box {
-			background: #1a1a1a;
-			padding: 15px;
-			border-radius: 10px;
-		}
+.card img {
+	width: 100%;
+	height: 150px;
+	object-fit: cover;
+}
 
-		/* FOOTER */
-		footer {
-			text-align: center;
-			padding: 20px;
-			background: #111;
-			margin-top: 20px;
-		}
+.card p {
+	padding: 10px;
+	text-align: center;
+}
 
-		/* 📱 АДАПТАЦИЯ */
-		@media (max-width: 900px) {
-			header {
-				flex-direction: column;
-				gap: 10px;
-				text-align: center;
-			}
+/* ABOUT */
+.about {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 15px;
+	padding: 40px;
+}
 
-			.cars {
-				grid-template-columns: repeat(2, 1fr);
-			}
+.box {
+	background: rgba(255,255,255,0.05);
+	border-radius: 12px;
+	padding: 15px;
+	transition: 0.3s;
+}
 
-			.about {
-				grid-template-columns: 1fr;
-			}
+.box:hover {
+	transform: translateY(-5px);
+	background: rgba(255,255,255,0.08);
+}
 
-			.hero h1 {
-				font-size: 28px;
-			}
-		}
-	</style>
+/* FOOTER */
+footer {
+	text-align: center;
+	padding: 20px;
+	opacity: 0.6;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+	from { opacity: 0; transform: translateY(20px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+	to { opacity: 1; transform: translateY(0); }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+	header {
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.hero h1 {
+		font-size: 32px;
+	}
+}
+</style>
 </head>
 
 <body>
 
 <header>
 	<div class="logo">
-		<img src="img/proton_logo.png" alt="PROTON">
+		<img src="img/proton_logo.png">
 		<h2>PROTON</h2>
 	</div>
 
 	<nav>
 		<a href="#">Главная</a>
 		<a href="#">О компании</a>
-		<a href="#">Автомобили</a>
+		<a href="#">Авто</a>
 		<a href="#">Контакты</a>
 	</nav>
 </header>
 
 <section class="hero">
-	<h1>Мир суперкаров</h1>
-	<p>Лучшие автомобили Lamborghini в одном месте</p>
+	<h1>Скорость. Стиль. PROTON.</h1>
+	<p>Премиальные автомобили и эстетика будущего</p>
 </section>
 
 <section class="cars">
 	<div class="card">
 		<img src="img/lamba_1.jpeg">
-		<p>Жёлтый Lamborghini Aventador</p>
+		<p>Жёлтый Aventador</p>
 	</div>
 
 	<div class="card">
 		<img src="img/lamba_2.jpeg">
-		<p>Оранжевый Lamborghini Aventador</p>
+		<p>Оранжевый Aventador</p>
 	</div>
 
 	<div class="card">
 		<img src="img/lamba_3.jpeg">
-		<p>Красный Lamborghini Aventador</p>
+		<p>Красный Aventador</p>
 	</div>
 
 	<div class="card">
 		<img src="img/lamba_4.jpeg">
-		<p>Синий Lamborghini Aventador</p>
+		<p>Синий Aventador</p>
 	</div>
 
 	<div class="card">
 		<img src="img/lamba_5.jpg">
-		<p>Белый Lamborghini Aventador</p>
+		<p>Белый Aventador</p>
 	</div>
 </section>
 
 <section class="about">
-	<div class="box">PROTON — современный сайт о суперкарах и автомобильном дизайне.</div>
-	<div class="box">Мы собираем лучшие автомобили Lamborghini в одном месте.</div>
-	<div class="box">Следим за новинками автомобильного мира.</div>
-	<div class="box">Делаем удобный и красивый интерфейс.</div>
-	<div class="box">Открыты к предложениям и идеям пользователей.</div>
+	<div class="box">PROTON — современный автомобильный бренд-проект.</div>
+	<div class="box">Мы показываем лучшие супер кары мира.</div>
+	<div class="box">Следим за дизайном и технологиями будущего.</div>
+	<div class="box">Создаём стильный визуальный опыт.</div>
 </section>
 
 <footer>
-	© 2026 PROTON. Все права защищены.
+	© 2026 PROTON — Made with style
 </footer>
 
 </body>
