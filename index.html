@@ -1,112 +1,207 @@
 <!DOCTYPE html>
 <html lang="ru">
-	<head>
-		<meta charset="UTF-8">
-		<title>PROTON</title>
-		<link rel="stylesheet" href="css/global.css">
-		<script src="js/autoreload.js"></script>
-	</head>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>PROTON</title>
 
-	<body class="global__body">
-		<header class="global__header">
-			<div class="global__header-logo">
-				<img src="img/proton_logo.png" width="70" height="70" alt="Логотип PROTON">
-			</div>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: Arial, sans-serif;
+		}
 
-			<div class="global__header-title">
-				<h1>PROTON</h1>
-			</div>
+		body {
+			background: #0f0f0f;
+			color: white;
+		}
 
-			<nav class="global__nav">
-				<a href="">Главная страница</a>
-				<a href="">О компании</a>
-				<a href="">О продукции</a>
-				<a href="">Обратная связь</a>
-			</nav>
-		</header>
+		/* HEADER */
+		header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 15px 30px;
+			background: #111;
+			position: sticky;
+			top: 0;
+			z-index: 1000;
+		}
 
-		<main class="global__main">
-			<section class="global__slider">
-				<div class="slide">
-					<!-- image one -->
+		.logo {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+		}
 
-					<input type="radio" name="slider2" id="slider2_1" checked="checked">
-					<label for="slider2_1"></label>
-					<div>
-						<p>Lamborghini Aventador - жёлтый</p>
-						<img src="img/lamba_1.jpeg">
-					</div>
-					<label for="slider2_2"></label>
+		.logo img {
+			width: 45px;
+			height: 45px;
+		}
 
-					<!-- image two -->
+		nav a {
+			color: white;
+			text-decoration: none;
+			margin-left: 15px;
+			transition: 0.3s;
+		}
 
-					<input type="radio" name="slider2" id="slider2_2">
-					<label for="slider2_2"></label>
-					<div>
-						<p>Lamborghini Aventador - оранжевый</p>
-						<img src="img/lamba_2.jpeg">
-					</div>
-					<label for="slider2_3"></label>
+		nav a:hover {
+			color: #ff3b3b;
+		}
 
-					<!-- image three -->
+		/* HERO */
+		.hero {
+			text-align: center;
+			padding: 80px 20px;
+			background: linear-gradient(90deg, #ff3b3b, #111);
+		}
 
-					<input type="radio" name="slider2" id="slider2_3">
-					<label for="slider2_3"></label>
-					<div>
-						<p>Lamborghini Aventador - красный</p>
-						<img src="img/lamba_3.jpeg">
-					</div>
-					<label for="slider2_4"></label>
+		.hero h1 {
+			font-size: 42px;
+		}
 
-					<!-- image four -->
+		.hero p {
+			margin-top: 10px;
+			opacity: 0.9;
+		}
 
-					<input type="radio" name="slider2" id="slider2_4">
-					<label for="slider2_4"></label>
-					<div>
-						<p>Lamborghini Aventador - синий</p>
-						<img src="img/lamba_4.jpeg">
-					</div>
-					<label for="slider2_5"></label>
+		/* CARS */
+		.cars {
+			display: grid;
+			grid-template-columns: repeat(5, 1fr);
+			gap: 15px;
+			padding: 40px;
+		}
 
-					<!-- image five -->
+		.card {
+			background: #1a1a1a;
+			border-radius: 10px;
+			overflow: hidden;
+			transition: 0.3s;
+			text-align: center;
+		}
 
-					<input type="radio" name="slider2" id="slider2_5">
-					<label for="slider2_5"></label>
-					<div>
-						<p>Lamborghini Aventador - белый</p>
-						<img src="img/lamba_5.jpg">
-					</div>
-					<label for="slider2_6"></label>
+		.card:hover {
+			transform: scale(1.05);
+		}
 
-				</div>
-			</section>
+		.card img {
+			width: 100%;
+			height: 150px;
+			object-fit: cover;
+		}
 
-			<section class="global__blocks">
-				<div class="global__blocks-item">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-				</div>
+		.card p {
+			padding: 10px;
+		}
 
-				<div class="global__blocks-item">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-				</div>
+		/* ABOUT */
+		.about {
+			display: grid;
+			grid-template-columns: repeat(5, 1fr);
+			gap: 10px;
+			padding: 40px;
+		}
 
-				<div class="global__blocks-item">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-				</div>
+		.box {
+			background: #1a1a1a;
+			padding: 15px;
+			border-radius: 10px;
+		}
 
-				<div class="global__blocks-item">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-				</div>
+		/* FOOTER */
+		footer {
+			text-align: center;
+			padding: 20px;
+			background: #111;
+			margin-top: 20px;
+		}
 
-				<div class="global__blocks-item">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-				</div>
-			</section>
-		</main>
+		/* 📱 АДАПТАЦИЯ */
+		@media (max-width: 900px) {
+			header {
+				flex-direction: column;
+				gap: 10px;
+				text-align: center;
+			}
 
-		<footer class="global__footer">
-			SergoIndustries<br>
-			24.09.2020
-		</footer>
-	</body>
+			.cars {
+				grid-template-columns: repeat(2, 1fr);
+			}
+
+			.about {
+				grid-template-columns: 1fr;
+			}
+
+			.hero h1 {
+				font-size: 28px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+
+<header>
+	<div class="logo">
+		<img src="img/proton_logo.png" alt="PROTON">
+		<h2>PROTON</h2>
+	</div>
+
+	<nav>
+		<a href="#">Главная</a>
+		<a href="#">О компании</a>
+		<a href="#">Автомобили</a>
+		<a href="#">Контакты</a>
+	</nav>
+</header>
+
+<section class="hero">
+	<h1>Мир суперкаров</h1>
+	<p>Лучшие автомобили Lamborghini в одном месте</p>
+</section>
+
+<section class="cars">
+	<div class="card">
+		<img src="img/lamba_1.jpeg">
+		<p>Жёлтый Lamborghini Aventador</p>
+	</div>
+
+	<div class="card">
+		<img src="img/lamba_2.jpeg">
+		<p>Оранжевый Lamborghini Aventador</p>
+	</div>
+
+	<div class="card">
+		<img src="img/lamba_3.jpeg">
+		<p>Красный Lamborghini Aventador</p>
+	</div>
+
+	<div class="card">
+		<img src="img/lamba_4.jpeg">
+		<p>Синий Lamborghini Aventador</p>
+	</div>
+
+	<div class="card">
+		<img src="img/lamba_5.jpg">
+		<p>Белый Lamborghini Aventador</p>
+	</div>
+</section>
+
+<section class="about">
+	<div class="box">PROTON — современный сайт о суперкарах и автомобильном дизайне.</div>
+	<div class="box">Мы собираем лучшие автомобили Lamborghini в одном месте.</div>
+	<div class="box">Следим за новинками автомобильного мира.</div>
+	<div class="box">Делаем удобный и красивый интерфейс.</div>
+	<div class="box">Открыты к предложениям и идеям пользователей.</div>
+</section>
+
+<footer>
+	© 2026 PROTON. Все права защищены.
+</footer>
+
+</body>
 </html>
